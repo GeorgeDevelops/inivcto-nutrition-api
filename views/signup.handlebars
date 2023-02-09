@@ -1,0 +1,80 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 40px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        header {
+            width: 100%;
+            background-color: #1f618d;
+            padding: 5px 10px;
+            margin-bottom: 10px;
+        }
+
+        header h4 {
+            font-weight: bold;
+            color: #fff;
+        }
+
+        div {
+            display: block;
+            padding: 5px 10px;
+        }
+
+        div p {
+            font-size: 15px;
+            font-weight: lighter;
+            color: #333;
+        }
+
+        div strong {
+            color: #1f618d;
+            font-size: 18px;
+        }
+
+        footer {
+            width: 100%;
+            background-color: #1f618d;
+            padding: 2px;
+        }
+
+        footer h6 {
+            color: #fff;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h2>Invicto Nutrition</h2>
+    </header>
+    <div>
+        <p>Hola {{ name }},</p>
+        <br />
+        <p>Gracias por registrarte a Invicto Nutrition.</p>
+        <br> 
+        <p>Como agradecimiento especial, le ofrecemos un 10% de descuento al realizar su primera compra.</p>
+        <br />
+        <p>Simplemente use el cupón a continuación en la seccion de checkout de nuestra pagina web.</p>
+        <br />
+        <strong>{{ coupon }}</strong>
+        <br />
+    </div>
+    <footer>
+        <p>Todos los derechos reservados &copy; Invicto Nutrition</p>
+    </footer>
+</body>
+
+</html>

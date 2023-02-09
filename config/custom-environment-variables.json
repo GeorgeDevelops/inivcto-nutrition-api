@@ -1,0 +1,21 @@
+{
+    "private": {
+        "key": ""
+    },
+    "db": {
+        "URI":"",
+        "user": "",
+        "password": ""
+    },
+    "settings": {
+        "domain": ""
+    },
+    "payment_settings": {
+        "engine": "",
+        "secret_key": ""
+    },
+    "email": {
+        "user": "",
+        "password": ""
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "private": {
+        "key": "MySecureKey"
+    },
+    
+    "db": {
+        "URI":"mongodb://localhost/elite-nutrition",
+        "user": "",
+        "password": ""
+    },
+    "settings": {
+        "domain": "http://localhost:5000" 
+    },
+    "payment_settings": {
+        "engine": "",
+        "secret_key": "", 
+        "CLIENT_ID": "AWWtKRrhmFYvQMI_hJ9-Ks4HPUkAsXdAAbfcq0Zggw4u4WzWbAdAEhcRjo3DnrBFYJvtnikt_73g86r3",
+        "APP_SECRET": "EGl7ZopMWSjGf5X0Q_EG5wcJcQdI-th8a4hDIUuyJR0D9dHJmUpUHiJqJg9EtUyPL2oAfb1nd0uAblQZ"
+    },
+        "email": {
+        "user": "invictonutrition@outlook.com",
+        "password": "mNIGLQRAIWBIOCT192002",
+        "access_key": "secure_key"
+    }
+}

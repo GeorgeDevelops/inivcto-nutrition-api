@@ -1,0 +1,69 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 40px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        header {
+            width: 100%;
+            background-color: #1f618d;
+            padding: 5px 10px;
+            margin-bottom: 10px;
+        }
+
+        header h4 {
+            font-weight: bold;
+            color: #fff;
+        }
+
+         div {
+            display: block;
+            padding: 5px 10px;
+        }
+
+        div p {
+            font-size: 15px;
+            font-weight: lighter;
+            color: #333;
+        }
+
+        footer {
+            width: 100%;
+            background-color: #1f618d;
+            padding: 2px;
+        }
+
+        footer h6 {
+            color: #333;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h4>Invicto Nutrition | Soporte</h4>
+    </header>
+    <div>
+        <p>Estimado {{ name }}, este correo automatizado es para confirmarle que hemos recibido su mensaje y nos estaremos comunicando con usted tan pronto como nos sea possible.</p>
+        <br />
+        <br />
+        <p>Muchas gracias.</p>
+    </div>
+    <footer>
+        <h6>Todos los derechos reservados &copy; Invicto Nutrition</h6>
+    </footer>
+</body>
+
+</html>
