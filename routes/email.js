@@ -6,9 +6,9 @@ const config = require("config");
 
 router.post("/email/contact", async (req, res) => {
     const { sender, name, subject, message } = req.body;
-    const secret_key = config.get("email.access_key");
+    const secret_key = config.get("EMAIL_SECRET_KEY");
     let options = {
-        from: `"Invicto Nutrition Support - " <${config.get("email.user")}>`,
+        from: `"Invicto Nutrition Support - " <${config.get("EMAIL_USER")}>`,
         to: `invictonutrition@gmail.com`,
         subject: `${subject} | Invicto Nutrition Contact Form`,
         template: "formMessage",
@@ -45,10 +45,10 @@ router.post("/email/contact", async (req, res) => {
 });
 router.post("/thank-you-for-your-registration", async (req, res) => {
     const { name, coupon, email } = req.body;
-    const secret_key = config.get("email.access_key");
+    const secret_key = config.get("EMAIL_SECRET_KEY");
 
     let options = {
-        from: `"Invicto Nutrition Support - " <${config.get("email.user")}>`,
+        from: `"Invicto Nutrition Support - " <${config.get("EMAIL_USER")}>`,
         to: `${email}`,
         subject: `Gracias por registrarte | Invicto Nutrition`,
         template: "signup",
@@ -74,10 +74,10 @@ router.post("/thank-you-for-your-registration", async (req, res) => {
 });
 router.post("/thank-you-for-your-purchase", async (req, res) => {
     const { name, email, orderId } = req.body;
-    const secret_key = config.get("email.access_key");
+    const secret_key = config.get("EMAIL_SECRET_KEY");
 
     let options = {
-        from: `"Invicto Nutrition Support - " <${config.get("email.user")}>`,
+        from: `"Invicto Nutrition Support - " <${config.get("EMAIL_USER")}>`,
         to: `${email}`,
         subject: `Gracias por tu compra | Invicto Nutrition`,
         template: "order",
@@ -103,7 +103,7 @@ router.post("/thank-you-for-your-purchase", async (req, res) => {
 router.post("/admin/email/send", async (req, res) => {
     const { email, name, subject, content } = req.body;
     try {
-        const secret_key = config.get("email.access_key");
+        const secret_key = config.get("EMAIL_SECRET_KEY");
 
 
         if (!secret_key || secret_key === "") return res.status(403).send("Unauthorized. Check settings");
@@ -112,7 +112,7 @@ router.post("/admin/email/send", async (req, res) => {
         if (!content || content === "") return res.status(400).send("ERROR: Contenido not defined.");
 
         let options = {
-            from: `"Invicto Nutrition Support - " <${config.get("email.user")}>`,
+            from: `"Invicto Nutrition Support - " <${config.get("EMAIL_USER")}>`,
             to: `${email}`,
             subject: `${subject} | Invicto Nutrition Support`,
             template: "email",

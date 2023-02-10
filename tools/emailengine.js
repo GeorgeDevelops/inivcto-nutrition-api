@@ -6,8 +6,8 @@ const path = require("path");
 let transporter = nodemailer.createTransport({
     service: "hotmail",
     auth: {
-        user: config.get("email.user"),
-        pass: config.get("email.password"),
+        user: config.get("EMAIL_USER"),
+        pass: config.get("EMAIL_PASSWORD"),
     }
 });
 

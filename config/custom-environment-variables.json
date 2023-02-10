@@ -1,21 +1,13 @@
 {
-    "private": {
-        "key": ""
-    },
-    "db": {
-        "URI":"",
-        "user": "",
-        "password": ""
-    },
-    "settings": {
-        "domain": ""
-    },
-    "payment_settings": {
-        "engine": "",
-        "secret_key": ""
-    },
-    "email": {
-        "user": "",
-        "password": ""
-    }
+    "PRIVATE_KEY": "",
+        "DB_URL":"",
+        "DOMAIN": "",
+        "PAYPAL_BASE_URL": "",
+        "PAYMENT_ENGINE": "",
+        "PAYMENT_SECRET_KEY": "", 
+        "PAYPAL_CLIENT_ID": "",
+        "PAYPAL_APP_SECRET": "",
+        "EMAIL_USER": "",
+        "EMAIL_PASSWORD": "",
+        "EMAIL_SECRET_KEY": ""
 }

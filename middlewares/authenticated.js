@@ -7,7 +7,7 @@ module.exports = function (req, res, next) {
     if (!token || token === "") return res.status(401).send("No token provided.");
 
     try {
-        const decoded = jwt.verify(token, config.get("private.key"));
+        const decoded = jwt.verify(token, config.get("PRIVATE_KEY"));
         req.user = decoded;
         next();
     } catch (error) {

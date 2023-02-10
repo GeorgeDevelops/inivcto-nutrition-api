@@ -68,7 +68,7 @@ const schema = new Schema({
 });
 
 schema.methods.generateJWT = function () {
-    const token = jwt.sign({ _id: this._id, firstName: this.first_name }, config.get("private.key"));
+    const token = jwt.sign({ _id: this._id, firstName: this.first_name }, config.get("PRIVATE_KEY"));
     return token;
 }
 

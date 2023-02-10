@@ -1,25 +1,13 @@
 {
-    "private": {
-        "key": "MySecureKey"
-    },
-    
-    "db": {
-        "URI":"mongodb://localhost/elite-nutrition",
-        "user": "",
-        "password": ""
-    },
-    "settings": {
-        "domain": "http://localhost:5000" 
-    },
-    "payment_settings": {
-        "engine": "",
-        "secret_key": "", 
-        "CLIENT_ID": "AWWtKRrhmFYvQMI_hJ9-Ks4HPUkAsXdAAbfcq0Zggw4u4WzWbAdAEhcRjo3DnrBFYJvtnikt_73g86r3",
-        "APP_SECRET": "EGl7ZopMWSjGf5X0Q_EG5wcJcQdI-th8a4hDIUuyJR0D9dHJmUpUHiJqJg9EtUyPL2oAfb1nd0uAblQZ"
-    },
-        "email": {
-        "user": "invictonutrition@outlook.com",
-        "password": "mNIGLQRAIWBIOCT192002",
-        "access_key": "secure_key"
-    }
+    "PRIVATE_KEY": "MySecureKey",
+        "DB_URL":"mongodb://localhost/elite-nutrition",
+        "DOMAIN": "http://localhost:5000",
+        "PAYPAL_BASE_URL": "https://api-m.sandbox.paypal.com",
+        "PAYMENT_ENGINE": "",
+        "PAYMENT_SECRET_KEY": "", 
+        "PAYPAL_CLIENT_ID": "AWWtKRrhmFYvQMI_hJ9-Ks4HPUkAsXdAAbfcq0Zggw4u4WzWbAdAEhcRjo3DnrBFYJvtnikt_73g86r3",
+        "PAYPAL_APP_SECRET": "EGl7ZopMWSjGf5X0Q_EG5wcJcQdI-th8a4hDIUuyJR0D9dHJmUpUHiJqJg9EtUyPL2oAfb1nd0uAblQZ",
+        "EMAIL_USER": "invictonutrition@outlook.com",
+        "EMAIL_PASSWORD": "",
+        "EMAIL_SECRET_KEY": "secure_key"
 }

@@ -3,7 +3,6 @@ const router = express.Router();
 const Admin = require("./../models/admin");
 const bcrypt = require("bcrypt");
 const Log = require("./../middlewares/logger");
-const date = new Date();
 const _ = require("lodash");
 const { Validator } = require("./../middlewares/validator");
 const admin = require("./../middlewares/admin");

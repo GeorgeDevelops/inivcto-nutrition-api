@@ -45,7 +45,7 @@ const schema = new Schema({
 });
 
 schema.methods.generateJWT = function () {
-    const token = jwt.sign({ _id: this._id, firstName: this.first_name, lastName: this.last_name, is_admin: this.is_admin }, config.get("private.key"), { algorithm: 'HS256' });
+    const token = jwt.sign({ _id: this._id, firstName: this.first_name, lastName: this.last_name, is_admin: this.is_admin }, config.get("PRIVATE_KEY"), { algorithm: 'HS256' });
     return token;
 }
 
