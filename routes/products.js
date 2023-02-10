@@ -3,7 +3,6 @@ const router = express.Router();
 const Product = require("./../models/product");
 const Log = require("./../middlewares/logger");
 const _ = require("lodash");
-const { ProductValidator } = require("./../middlewares/validator");
 const admin = require("./../middlewares/admin");
 const auth = require("./../middlewares/authenticated");
 
@@ -31,11 +30,7 @@ router.get("/products/:id", async (req, res) => {
 
 router.post("/products/new", [auth, admin], async (req, res) => {
     const { name, weight, brand, images, category, description } = req.body;
-    const object = _.pick(req.body, ["name", "weight", "brand", "images", "category", "flavors", "description"]);
     try {
-        const response = await ProductValidator.validateAsync(object);
-        if (response.error) return res.status(400).send(response.error.details[0].message);
-
         const product = new Product({
             name,
             weight,

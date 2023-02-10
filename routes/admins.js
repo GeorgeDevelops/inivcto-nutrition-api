@@ -4,17 +4,12 @@ const Admin = require("./../models/admin");
 const bcrypt = require("bcryptjs");
 const Log = require("./../middlewares/logger");
 const _ = require("lodash");
-const { Validator } = require("./../middlewares/validator");
 const admin = require("./../middlewares/admin");
 const auth = require("./../middlewares/authenticated");
 
 router.post("/admin/signup", [auth, admin], async (req, res) => {
     const { first_name, last_name, cedula, phone, email, password } = req.body;
-    const object = _.pick(req.body, ["first_name", "last_name", "cedula", "phone", "email", "password"]);
     try {
-        const response = Validator.validate(object);
-        if (response.error) return res.status(400).send(response.error.details[0].message);
-
         const duplicated = await Admin.find({ cedula: cedula });
         if (duplicated.length > 0) return res.status(400).send("Esta cuenta ya existe.");
 

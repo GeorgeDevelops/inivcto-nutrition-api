@@ -1,6 +1,6 @@
 {
   "name": "elite-nutrition",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "\"Elite nutrition es una empresa dedicada a la provisión y distribución de productos proteicos, deportivos y alimenticios.\"",
   "main": "index.js",
   "scripts": {
