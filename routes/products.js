@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const Product = require("./../models/product");
 const Log = require("./../middlewares/logger");
-const _ = require("lodash");
 const admin = require("./../middlewares/admin");
 const auth = require("./../middlewares/authenticated");
 

@@ -38,10 +38,10 @@ router.post("/admin/login", async (req, res) => {
     try {
         if (Object.keys(req.body).length < 2) return res.status(400).send("Solicitud Invalida.")
 
-        const user = await Admin.findOne({ cedula: cedula });
-        if (!user || user === "") return res.status(404).send("Cedula o contraseña incorrecta");
+        const user = await Admin.find({ cedula: cedula });
+        if (!user || user.length < 1) return res.status(404).send("Cedula o contraseña incorrecta");
 
-        const isCorrect = await bcrypt.compare(password, user.password);
+        const isCorrect = await bcrypt.compare(password, user[0].password);
         if (!isCorrect) return res.status(404).send("Cedula o contraseña incorrecta");
 
         const token = user.generateJWT();

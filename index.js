@@ -7,6 +7,17 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 mongoose.set('strictQuery', false);
 
+// Routes Files 
+
+const adminRoute = require("./routes/admins");
+const userAuthenticationRoute = require("./routes/auth");
+const productsRoute = require("./routes/products");
+const ordersRoute = require("./routes/orders");
+const emailRoute = require("./routes/email");
+const paypalRoute = require("./routes/paypal");
+const customerRoute = require("./routes/customers");
+const promoRoute = require("./routes/promos");
+
 // Catching exceptions and unhandle promises
 process.on("connection", (stream) => {
     Log.info("There has been a new connection", stream);
@@ -27,16 +38,6 @@ process.on("unhandledRejection", (error) => {
     process.exit(1);
 });
 
-// Routes Files 
-
-const adminRoute = require("./routes/admins");
-const userAuthenticationRoute = require("./routes/auth");
-const productsRoute = require("./routes/products");
-const ordersRoute = require("./routes/orders");
-const emailRoute = require("./routes/email");
-const paypalRoute = require("./routes/paypal");
-const customerRoute = require("./routes/customers");
-const promoRoute = require("./routes/promos");
 
 // Middlewares 
 app.use(helmet());
@@ -55,7 +56,7 @@ app.use((req, res, next) => {
 });
 
 // Test route
-app.get("/", async (req, res) => {
+app.get("/api", async (req, res) => {
     try {
         return res.status(200).json({ status: 200, outcome: "SUCCESS" });
     } catch (error) {
