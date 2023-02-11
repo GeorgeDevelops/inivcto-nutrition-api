@@ -44,7 +44,7 @@ router.post("/admin/login", async (req, res) => {
         const isCorrect = await bcrypt.compare(password, user[0].password);
         if (!isCorrect) return res.status(404).send("Cedula o contraseña incorrecta");
 
-        const token = user.generateJWT();
+        const token = user[0].generateJWT();
 
         return res
             .header("x-auth-token", token)
