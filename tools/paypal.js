@@ -1,10 +1,9 @@
-const config = require("config");
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
-const CLIENT_ID = config.get("PAYPAL_CLIENT_ID");
-const APP_SECRET = config.get("PAYPAL_APP_SECRET");
+const CLIENT_ID = process.env.PAYPAL_CLIENT_ID;
+const APP_SECRET = process.env.PAYPAL_APP_SECRET;
 
-const base = config.get("PAYPAL_BASE_URL");
+const base = process.env.PAYPAL_BASE_URL;
 
 async function createOrder(total) {
     let price = Math.ceil(total / 55);

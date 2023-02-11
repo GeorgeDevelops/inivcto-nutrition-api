@@ -1,13 +1,12 @@
 const nodemailer = require("nodemailer");
-const config = require("config");
 const hbs = require("nodemailer-express-handlebars");
 const path = require("path");
 
 let transporter = nodemailer.createTransport({
     service: "hotmail",
     auth: {
-        user: config.get("EMAIL_USER"),
-        pass: config.get("EMAIL_PASSWORD"),
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASSWORD,
     }
 });
 

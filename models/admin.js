@@ -1,6 +1,5 @@
 const { Schema, model, default: mongoose } = require("mongoose");
 const jwt = require("jsonwebtoken");
-const config = require("config");
 const date = new Date();
 
 const schema = new Schema({
@@ -45,7 +44,7 @@ const schema = new Schema({
 });
 
 schema.methods.generateJWT = function () {
-    const token = jwt.sign({ _id: this._id, firstName: this.first_name, lastName: this.last_name, is_admin: this.is_admin }, config.get("PRIVATE_KEY"), { algorithm: 'HS256' });
+    const token = jwt.sign({ _id: this._id, firstName: this.first_name, lastName: this.last_name, is_admin: this.is_admin }, process.env.PRIVATE_KEY, { algorithm: 'HS256' });
     return token;
 }
 

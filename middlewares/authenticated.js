@@ -1,5 +1,4 @@
 const jwt = require("jsonwebtoken");
-const config = require("config");
 const Log = require("./logger");
 
 module.exports = function (req, res, next) {
@@ -7,7 +6,7 @@ module.exports = function (req, res, next) {
     if (!token || token === "") return res.status(401).send("No token provided.");
 
     try {
-        const decoded = jwt.verify(token, config.get("PRIVATE_KEY"));
+        const decoded = jwt.verify(token, process.env.PRIVATE_KEY);
         req.user = decoded;
         next();
     } catch (error) {

@@ -43,6 +43,7 @@ app.use(helmet());
 app.use(morgan('tiny'));
 app.use(express.json());
 app.use(cors());
+require('dotenv').config();
 require("./middlewares/db")();
 require("./middlewares/secure")();
 
