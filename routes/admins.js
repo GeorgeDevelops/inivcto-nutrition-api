@@ -3,7 +3,6 @@ const router = express.Router();
 const Admin = require("./../models/admin");
 const bcrypt = require("bcryptjs");
 const Log = require("./../middlewares/logger");
-const _ = require("lodash");
 const admin = require("./../middlewares/admin");
 const auth = require("./../middlewares/authenticated");
 
@@ -37,7 +36,6 @@ router.post("/admin/login", async (req, res) => {
     const { cedula, password } = req.body;
     try {
         if (Object.keys(req.body).length < 2) return res.status(400).send("Solicitud Invalida.")
-
         const user = await Admin.find({ cedula: cedula });
         if (!user || user.length < 1) return res.status(404).send("Cedula o contraseña incorrecta");
 

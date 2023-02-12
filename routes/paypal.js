@@ -25,7 +25,9 @@ router.post("/paypal/create-order", auth, async (req, res) => {
 
         if (!response || response.length < 1) return res.status(400).send("Algo ha salido mas al validar los productos, por favor contacte soporte para una rapida solucion a este problema.");
 
-        let total = response.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        let subtotal = response.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+        let total = subtotal + 300; // $300 DOP delivery service
 
         let order = await paypal.order.create(total);
 

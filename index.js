@@ -17,6 +17,7 @@ const emailRoute = require("./routes/email");
 const paypalRoute = require("./routes/paypal");
 const customerRoute = require("./routes/customers");
 const promoRoute = require("./routes/promos");
+const paymentRoute = require("./routes/payments");
 
 // Catching exceptions and unhandle promises
 process.on("connection", (stream) => {
@@ -72,6 +73,7 @@ app.use("/api", emailRoute);
 app.use("/api", paypalRoute);
 app.use("/api", customerRoute);
 app.use("/api", promoRoute);
+app.use("/api", paymentRoute);
 
 // Listener
 const port = process.env.PORT || 5000;
