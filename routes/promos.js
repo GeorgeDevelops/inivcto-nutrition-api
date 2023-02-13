@@ -62,16 +62,16 @@ router.get("/admin/promos", [auth, admin], async (req, res) => {
     }
 });
 
-router.get("/promotions/:code", [auth, admin], async (req, res) => {
-    const code = req.params;
+router.get("/promotions/:code", auth, async (req, res) => {
+    const { code } = req.params;
     try {
         let promotion = await Promo.find({ code });
 
-        if (!promotion || promotion.length < 1 || !promotion[0]) return res.status(404).send({ isAvailable: false, message: "Codigo de promocion no valido." });
+        if (!promotion || promotion.length < 1 || !promotion[0]) return res.status(404).send("Codigo de promocion no valido.");
 
-        if (!promotion[0].enabled) return res.status(400).send({ isAvailable: false, message: "Lo sentimos, esta promocion ya no esta disponible." });
+        if (!promotion[0].enabled) return res.status(400).send("Lo sentimos, esta promocion ya no esta disponible.");
 
-        return res.status(200).send({ isAvailable: true, promotion, message: "Promocion aplicada." });
+        return res.status(200).send({ promotion, message: "Promocion aplicada." });
     } catch (error) {
         Log.error(error);
         return res.status(500).send("Algo ha salido mal favor comunicar ha soporte.");
