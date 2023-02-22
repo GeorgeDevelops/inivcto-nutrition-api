@@ -5,8 +5,12 @@ const APP_SECRET = process.env.PAYPAL_APP_SECRET;
 
 const base = process.env.PAYPAL_BASE_URL;
 
+// const CLIENT_ID = "AWWtKRrhmFYvQMI_hJ9-Ks4HPUkAsXdAAbfcq0Zggw4u4WzWbAdAEhcRjo3DnrBFYJvtnikt_73g86r3";
+// const APP_SECRET = "EGl7ZopMWSjGf5X0Q_EG5wcJcQdI-th8a4hDIUuyJR0D9dHJmUpUHiJqJg9EtUyPL2oAfb1nd0uAblQZ";
+
+// const base = "https://api-m.sandbox.paypal.com";
+
 async function createOrder(total) {
-    let price = Math.ceil(total / 55);
     const accessToken = await generateAccessToken();
     const url = `${base}/v2/checkout/orders`;
 
@@ -22,7 +26,7 @@ async function createOrder(total) {
                 {
                     amount: {
                         currency_code: "USD",
-                        value: `${price}`,
+                        value: `${total}`,
                     },
                 },
             ],

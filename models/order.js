@@ -4,6 +4,7 @@ const date = new Date();
 const schema = new Schema({
     orderId: String,
     customerId: String,
+    promotionId: String,
     content: [Object],
     total: Number,
     status: {

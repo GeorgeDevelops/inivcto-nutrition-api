@@ -27,7 +27,24 @@ router.post("/paypal/create-order", auth, async (req, res) => {
 
         let subtotal = response.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
-        let total = subtotal + 300; // $300 DOP delivery service
+        let sub = subtotal + 250;
+
+        let currency_conversion = sub / 56;
+
+        let total = currency_conversion.toString();
+
+        if (currency_conversion.toString().includes(".")) {
+            console.log("INCLUDES");
+            let format = currency_conversion.toString().split(".");
+
+            let f1 = format[0];
+
+            let f2 = format[1].split("")[0];
+
+            let f3 = format[1].split("")[1]
+
+            total = `${f1}.${f2}${f3 ? f3 : ""}`.trim();
+        }
 
         let order = await paypal.order.create(total);
 

@@ -7,6 +7,7 @@ const auth = require("./../middlewares/authenticated");
 const admin = require("../middlewares/admin");
 const Customer = require("./../models/customer");
 const _ = require("lodash");
+const Promo = require("./../models/promo");
 
 router.get("/admin/orders", [auth, admin], async (req, res) => {
     try {
@@ -74,7 +75,7 @@ router.get("/orders/:orderId/confirm", auth, async (req, res) => {
     }
 });
 router.post("/orders/new", auth, async (req, res) => {
-    const { content, customerId, payment_details } = req.body;
+    const { content, customerId, payment_details, promotionId, paid } = req.body;
 
     try {
         if (content.length < 1) return res.status(400).send("Debe agregar al menos un producto para realizar pedido");
@@ -98,15 +99,24 @@ router.post("/orders/new", auth, async (req, res) => {
 
         let total = response.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
+        if (promotionId) {
+            let promotion = await Promo.findById(promotionId);
+
+            if (!promotion || promotion === "") return res.status(404).send("Esta promocion no existe.");
+
+            total = total - ((promotion.discount / 100) * total);
+        }
+
         let orderId = `IN${Math.ceil(Math.random() * 999999999)}`;
 
         let order = new Order({
             orderId,
             customerId,
             content: response,
-            total: Number(total),
-            isPaid: true,
-            payment_details
+            total: Number(total) + 250,
+            isPaid: paid,
+            payment_details,
+            promotionId
         });
 
         let newOrder = await order.save();
@@ -124,7 +134,7 @@ router.post("/orders/new", auth, async (req, res) => {
 
         let detailed = _.pick(newOrder, ["orderId", "content", "total", "date"]);
 
-        return res.status(200).send({ message: "Pedido sometido exitosamente", order_details: detailed });
+        return res.status(200).send({ message: "Pedido enviado correctamente", order_details: detailed });
     } catch (error) {
         Log.error(error.message);
         return res.status(500).send(`Ha ocurrido un error, por favor comuniquese con soporte`);

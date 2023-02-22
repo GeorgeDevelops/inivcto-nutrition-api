@@ -4,6 +4,7 @@ const Promo = require("./../models/promo");
 const Log = require("../middlewares/logger");
 const auth = require("../middlewares/authenticated");
 const admin = require("../middlewares/admin");
+const Order = require("./../models/order");
 
 router.post("/admin/promos/new", [auth, admin], async (req, res) => {
     try {
@@ -62,12 +63,18 @@ router.get("/admin/promos", [auth, admin], async (req, res) => {
     }
 });
 
-router.get("/promotions/:code", auth, async (req, res) => {
-    const { code } = req.params;
+router.get("/promotions/:code/:customerId", auth, async (req, res) => {
+    const { code, customerId } = req.params;
     try {
         let promotion = await Promo.find({ code });
 
         if (!promotion || promotion.length < 1 || !promotion[0]) return res.status(404).send("Codigo de promocion no valido.");
+
+        let promotionId = promotion[0]._id
+
+        let order = await Order.find({ customerId, promotionId });
+
+        if (order.length > 0) return res.status(400).send("Ya has participado en esta promocion.");
 
         if (!promotion[0].enabled) return res.status(400).send("Lo sentimos, esta promocion ya no esta disponible.");
 

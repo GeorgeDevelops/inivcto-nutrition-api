@@ -18,6 +18,7 @@ const paypalRoute = require("./routes/paypal");
 const customerRoute = require("./routes/customers");
 const promoRoute = require("./routes/promos");
 const paymentRoute = require("./routes/payments");
+const stripeRoute = require("./tools/stripe");
 
 // Catching exceptions and unhandle promises
 process.on("connection", (stream) => {
@@ -74,6 +75,7 @@ app.use("/api", paypalRoute);
 app.use("/api", customerRoute);
 app.use("/api", promoRoute);
 app.use("/api", paymentRoute);
+app.use("/api", stripeRoute);
 
 // Listener
 const port = process.env.PORT || 5000;
