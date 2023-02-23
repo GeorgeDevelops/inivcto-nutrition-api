@@ -56,7 +56,7 @@ router.get("/admin/orders/:orderId/single", [auth, admin], async (req, res) => {
     try {
         const order = await Order.findById(orderId);
         if (!order || order === "") return res.status(404).send("Este pedido no existe.");
-        let limited = _.pick(order, ["_id", "orderId", "customerId", "content", "total", "date", "status"])
+        let limited = _.pick(order, ["_id", "orderId", "customerId", "content", "total", "date", "status", "promotionId", "payment_details"])
         return res.status(200).send(limited);
     } catch (error) {
         Log.error(error.message);
